@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     
     image.onload = () => {
       
+      let start = performance.now();
       const img = this._cropService.crop(image, {
         x: 1250,
         y: 750,
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
         quality: .5,
         angle: 15
       });
+      console.log(performance.now() - start);
       this.src = this._san.bypassSecurityTrustUrl(img)
       
       let angle = 0;
@@ -43,7 +45,48 @@ export class AppComponent implements OnInit {
         this.src1 = this._san.bypassSecurityTrustUrl(img1)
         
         angle = angle + 10;
-      }, 10)
+      }, 10);
+
+      start = performance.now();
+      this._cropService.crop(image, {
+        x: 1250,
+        y: 750,
+        width: 50,
+        height: 50,
+        quality: 1,
+        angle: 0
+      });
+      console.log(performance.now() - start);
+      start = performance.now();
+      this._cropService.crop(image, {
+        x: 1250,
+        y: 750,
+        width: 100,
+        height: 100,
+        quality: 1,
+        angle: 0
+      });
+      console.log(performance.now() - start);
+      start = performance.now();
+      this._cropService.crop(image, {
+        x: 1250,
+        y: 750,
+        width: 500,
+        height: 500,
+        quality: 1,
+        angle: 0
+      });
+      console.log(performance.now() - start);
+      start = performance.now();
+      this._cropService.crop(image, {
+        x: 250,
+        y: 50,
+        width: 1750,
+        height: 1750,
+        quality: 1,
+        angle: 0
+      });
+      console.log(performance.now() - start);
     };
     
     image.src = 'assets/image.jpg';
