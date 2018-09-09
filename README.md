@@ -1,27 +1,78 @@
-# ImageCrop
+# ImageCrop ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+Ngx image cropper module.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+## Installation
+```
+npm install ngx-image-crop
+```
 
-## Development server
+app.module.ts
+```
+import { ImageCropModule } from 'ngx-image-crop'; 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+... 
+imports: [
+    ...
+    ImageCropModule
+    ...
+] 
+... 
+```
 
-## Code scaffolding
+## Usage
+```
+import { ImageCropService } from 'ngx-image-crop';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+...
+constructor(private _imageCropService: ImageCropService) { }
+...
 
-## Build
+...
+const dataUrl = this._imageCropService(image, {
+    x: <cropX>,
+    y: <cropY>,
+    width: <cropWidth>,
+    height: <cropHeight>,
+    quality: <quality-(between 0 - 1)>,
+    angle: <rotation angle in degree>
+});
+...
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
 
-## Running unit tests
+## Configuration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+/**
+* Iamge crop options interface.
+*/
+export interface ImageCropConfig {
+    /**
+    * 'x' coordinate of crop area on source image.
+    */
+    x?: number;
+    /**
+    * 'y' coordinate of crop area on source image.
+    */
+    y?: number;
+    /**
+    * Crop Width.
+    */
+    width?: number;
+    /**
+    * Crop height.
+    */
+    height?: number;
+    /**
+    * Rotation angle.
+    */
+    angle?: number;
+    /**
+    * Output image quality.
+    */
+    quality?: number;
+}
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

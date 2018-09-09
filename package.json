@@ -1,6 +1,19 @@
 {
   "name": "ngx-image-crop",
-  "version": "1.0.0",
+  "version": "1.0.2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oktykrk/ngx-image-crop.git"
+  },
+  "keywords": [
+    "ng",
+    "ngx",
+    "angular",
+    "image",
+    "crop",
+    "cropper"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
